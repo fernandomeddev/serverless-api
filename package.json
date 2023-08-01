@@ -1,0 +1,24 @@
+{
+  "name": "serveless-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx serverless offline ",
+    "predeploy": "npx prisma generate",
+    "deploy": "npx serverless deploy --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "prisma": "^5.0.0",
+    "serverless": "^3.33.0",
+    "serverless-offline": "^12.0.4",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.0.0"
+  }
+}
