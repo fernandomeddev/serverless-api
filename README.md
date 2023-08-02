@@ -17,6 +17,7 @@ Na Parte de "Documentação da API" você poderá testar as funcionalidades que 
 ## Autores
 
 - [@fernandomeddev](https://www.github.com/fernandomeddev)
+- fernandohenrique520@live.com
 
 
 ## Variáveis de Ambiente
