@@ -35,7 +35,7 @@ com a url do seu cluster no mongo;
 Clone o projeto
 
 ```bash
-  git clone https://github.com/mvdornellas/serverless-challenge.git
+  git clone https://github.com/fernandomeddev/serverless-api.git
 ```
 
 Entre no diretório do projeto
