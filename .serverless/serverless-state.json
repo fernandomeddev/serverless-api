@@ -95,6 +95,24 @@
               "LogGroupName": "/aws/lambda/serverless-challenge-dev-create-user"
             }
           },
+          "UpdateDashuserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/serverless-challenge-dev-update-user"
+            }
+          },
+          "ShowDashuserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/serverless-challenge-dev-show-user"
+            }
+          },
+          "DeleteDashuserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/serverless-challenge-dev-delete-user"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -180,7 +198,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-challenge/dev/1690854920237-2023-08-01T01:55:20.237Z/serverless-challenge.zip"
+                "S3Key": "serverless/serverless-challenge/dev/1690948440342-2023-08-02T03:54:00.342Z/serverless-challenge.zip"
               },
               "Handler": "src/list-user.handler",
               "Runtime": "nodejs16.x",
@@ -205,7 +223,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-challenge/dev/1690854920237-2023-08-01T01:55:20.237Z/serverless-challenge.zip"
+                "S3Key": "serverless/serverless-challenge/dev/1690948440342-2023-08-02T03:54:00.342Z/serverless-challenge.zip"
               },
               "Handler": "src/create-user.handler",
               "Runtime": "nodejs16.x",
@@ -223,24 +241,129 @@
               "CreateDashuserLogGroup"
             ]
           },
-          "ListDashuserLambdaVersionQQ60SjgObkebkYumeyGOFXNtpP6RVzYZL71SekqaTU": {
+          "UpdateDashuserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/serverless-challenge/dev/1690948440342-2023-08-02T03:54:00.342Z/serverless-challenge.zip"
+              },
+              "Handler": "src/update-user.handler",
+              "Runtime": "nodejs16.x",
+              "FunctionName": "serverless-challenge-dev-update-user",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "UpdateDashuserLogGroup"
+            ]
+          },
+          "ShowDashuserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/serverless-challenge/dev/1690948440342-2023-08-02T03:54:00.342Z/serverless-challenge.zip"
+              },
+              "Handler": "src/show-user.handler",
+              "Runtime": "nodejs16.x",
+              "FunctionName": "serverless-challenge-dev-show-user",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "ShowDashuserLogGroup"
+            ]
+          },
+          "DeleteDashuserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/serverless-challenge/dev/1690948440342-2023-08-02T03:54:00.342Z/serverless-challenge.zip"
+              },
+              "Handler": "src/delete-user.handler",
+              "Runtime": "nodejs16.x",
+              "FunctionName": "serverless-challenge-dev-delete-user",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "DeleteDashuserLogGroup"
+            ]
+          },
+          "ListDashuserLambdaVersion9DC9JMYYAESlmKCYmWdnTDSQXRtJHVXjeIdutHprQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListDashuserLambdaFunction"
               },
-              "CodeSha256": "wBMZEGK94exMM0KjkMyT0zVLfhwGSKGSnB81NzIJd7E="
+              "CodeSha256": "bmFLiN8twB/Wjy6v+vQKW6hc/cNRnhiVH5fgY7T6F70="
             }
           },
-          "CreateDashuserLambdaVersionxNRkdePGzbIVTtq2cWulYVePZg2O14Kp9m7b9nIKbc": {
+          "CreateDashuserLambdaVersion8c6p2B8V3ZDaGKmupOs86Uoul5Re3vyeoZYCrtCOQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateDashuserLambdaFunction"
               },
-              "CodeSha256": "wBMZEGK94exMM0KjkMyT0zVLfhwGSKGSnB81NzIJd7E="
+              "CodeSha256": "bmFLiN8twB/Wjy6v+vQKW6hc/cNRnhiVH5fgY7T6F70="
+            }
+          },
+          "UpdateDashuserLambdaVersion00WMNvJzqsjo7UAk5wyYhFwMEd9qOqTrqsiQ5dPUg": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateDashuserLambdaFunction"
+              },
+              "CodeSha256": "bmFLiN8twB/Wjy6v+vQKW6hc/cNRnhiVH5fgY7T6F70="
+            }
+          },
+          "ShowDashuserLambdaVersion9E2BRVp5ImCNo22kiXGuLMWoaJ242L5DzQ1Xqj0IMwU": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ShowDashuserLambdaFunction"
+              },
+              "CodeSha256": "bmFLiN8twB/Wjy6v+vQKW6hc/cNRnhiVH5fgY7T6F70="
+            }
+          },
+          "DeleteDashuserLambdaVersionpWU0gI8ELgfYkVgWlcelOZogRDZxv3zQ36pfZCB0UuM": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "DeleteDashuserLambdaFunction"
+              },
+              "CodeSha256": "bmFLiN8twB/Wjy6v+vQKW6hc/cNRnhiVH5fgY7T6F70="
             }
           },
           "HttpApi": {
@@ -406,6 +529,222 @@
               }
             },
             "DependsOn": "HttpApiIntegrationCreateDashuser"
+          },
+          "UpdateDashuserLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "UpdateDashuserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationUpdateDashuser": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"UpdateDashuserLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRoutePutUserUseridVar": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "PUT /user/{userId}",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationUpdateDashuser"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationUpdateDashuser"
+          },
+          "ShowDashuserLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ShowDashuserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationShowDashuser": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ShowDashuserLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRouteGetUserUseridVar": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "GET /user/{userId}",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationShowDashuser"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationShowDashuser"
+          },
+          "DeleteDashuserLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "DeleteDashuserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationDeleteDashuser": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"DeleteDashuserLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRouteDeleteUserUseridVar": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "DELETE /user/{userId}",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationDeleteDashuser"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationDeleteDashuser"
           }
         },
         "Outputs": {
@@ -420,7 +759,7 @@
           "ListDashuserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListDashuserLambdaVersionQQ60SjgObkebkYumeyGOFXNtpP6RVzYZL71SekqaTU"
+              "Ref": "ListDashuserLambdaVersion9DC9JMYYAESlmKCYmWdnTDSQXRtJHVXjeIdutHprQ"
             },
             "Export": {
               "Name": "sls-serverless-challenge-dev-ListDashuserLambdaFunctionQualifiedArn"
@@ -429,10 +768,37 @@
           "CreateDashuserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateDashuserLambdaVersionxNRkdePGzbIVTtq2cWulYVePZg2O14Kp9m7b9nIKbc"
+              "Ref": "CreateDashuserLambdaVersion8c6p2B8V3ZDaGKmupOs86Uoul5Re3vyeoZYCrtCOQ"
             },
             "Export": {
               "Name": "sls-serverless-challenge-dev-CreateDashuserLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdateDashuserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateDashuserLambdaVersion00WMNvJzqsjo7UAk5wyYhFwMEd9qOqTrqsiQ5dPUg"
+            },
+            "Export": {
+              "Name": "sls-serverless-challenge-dev-UpdateDashuserLambdaFunctionQualifiedArn"
+            }
+          },
+          "ShowDashuserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ShowDashuserLambdaVersion9E2BRVp5ImCNo22kiXGuLMWoaJ242L5DzQ1Xqj0IMwU"
+            },
+            "Export": {
+              "Name": "sls-serverless-challenge-dev-ShowDashuserLambdaFunctionQualifiedArn"
+            }
+          },
+          "DeleteDashuserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "DeleteDashuserLambdaVersionpWU0gI8ELgfYkVgWlcelOZogRDZxv3zQ36pfZCB0UuM"
+            },
+            "Export": {
+              "Name": "sls-serverless-challenge-dev-DeleteDashuserLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -585,7 +951,7 @@
         "timeout": 6,
         "runtime": "nodejs16.x",
         "vpc": {},
-        "versionLogicalId": "ListDashuserLambdaVersionQQ60SjgObkebkYumeyGOFXNtpP6RVzYZL71SekqaTU"
+        "versionLogicalId": "ListDashuserLambdaVersion9DC9JMYYAESlmKCYmWdnTDSQXRtJHVXjeIdutHprQ"
       },
       "create-user": {
         "handler": "src/create-user.handler",
@@ -611,7 +977,106 @@
         "timeout": 6,
         "runtime": "nodejs16.x",
         "vpc": {},
-        "versionLogicalId": "CreateDashuserLambdaVersionxNRkdePGzbIVTtq2cWulYVePZg2O14Kp9m7b9nIKbc"
+        "versionLogicalId": "CreateDashuserLambdaVersion8c6p2B8V3ZDaGKmupOs86Uoul5Re3vyeoZYCrtCOQ"
+      },
+      "update-user": {
+        "handler": "src/update-user.handler",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/user/{userId}",
+              "method": "put",
+              "request": {
+                "parameters": {
+                  "paths": {
+                    "userId": true
+                  }
+                }
+              }
+            },
+            "resolvedMethod": "PUT",
+            "resolvedPath": "/user/{userId}"
+          }
+        ],
+        "name": "serverless-challenge-dev-update-user",
+        "package": {
+          "exclude": [
+            "node_modules/serverless-plugin-typescript"
+          ],
+          "include": [],
+          "patterns": []
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs16.x",
+        "vpc": {},
+        "versionLogicalId": "UpdateDashuserLambdaVersion00WMNvJzqsjo7UAk5wyYhFwMEd9qOqTrqsiQ5dPUg"
+      },
+      "show-user": {
+        "handler": "src/show-user.handler",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/user/{userId}",
+              "method": "get",
+              "request": {
+                "parameters": {
+                  "paths": {
+                    "userId": true
+                  }
+                }
+              }
+            },
+            "resolvedMethod": "GET",
+            "resolvedPath": "/user/{userId}"
+          }
+        ],
+        "name": "serverless-challenge-dev-show-user",
+        "package": {
+          "exclude": [
+            "node_modules/serverless-plugin-typescript"
+          ],
+          "include": [],
+          "patterns": []
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs16.x",
+        "vpc": {},
+        "versionLogicalId": "ShowDashuserLambdaVersion9E2BRVp5ImCNo22kiXGuLMWoaJ242L5DzQ1Xqj0IMwU"
+      },
+      "delete-user": {
+        "handler": "src/delete-user.handler",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/user/{userId}",
+              "method": "delete",
+              "request": {
+                "parameters": {
+                  "paths": {
+                    "userId": true
+                  }
+                }
+              }
+            },
+            "resolvedMethod": "DELETE",
+            "resolvedPath": "/user/{userId}"
+          }
+        ],
+        "name": "serverless-challenge-dev-delete-user",
+        "package": {
+          "exclude": [
+            "node_modules/serverless-plugin-typescript"
+          ],
+          "include": [],
+          "patterns": []
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs16.x",
+        "vpc": {},
+        "versionLogicalId": "DeleteDashuserLambdaVersionpWU0gI8ELgfYkVgWlcelOZogRDZxv3zQ36pfZCB0UuM"
       }
     },
     "configValidationMode": "warn",
@@ -636,7 +1101,7 @@
     "artifact": "C:\\Users\\ferna\\OneDrive\\Área de Trabalho\\www\\Serveless-api\\.build\\.serverless\\serverless-challenge.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-challenge/dev/1690854920237-2023-08-01T01:55:20.237Z",
+    "artifactDirectoryName": "serverless/serverless-challenge/dev/1690948440342-2023-08-02T03:54:00.342Z",
     "artifact": "serverless-challenge.zip"
   }
 }

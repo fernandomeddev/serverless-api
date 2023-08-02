@@ -19,6 +19,38 @@ functions:
       - httpApi:
           path: /users
           method: post
+  update-user:
+    handler: src/update-user.handler
+    events:
+      - httpApi:
+          path: /user/{userId}
+          method: put
+          request:
+            parameters:
+              paths:
+                userId: true
+  show-user:
+    handler: src/show-user.handler
+    events:
+      - httpApi:
+          path: /user/{userId}
+          method: get
+          request:
+            parameters:
+              paths:
+                userId: true
+  delete-user:
+    handler: src/delete-user.handler
+    events:
+      - httpApi:
+          path: /user/{userId}
+          method: delete
+          request:
+            parameters:
+              paths:
+                userId: true
+
+
 
 plugins:
   - serverless-offline

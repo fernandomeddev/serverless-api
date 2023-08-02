@@ -1,0 +1,1 @@
+DATABASE_URL="mongodb+srv://<username>:password>@sharkdev-api.plzqojw.mongodb.net/<database-name>"
